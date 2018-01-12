@@ -9,21 +9,37 @@ public class Game {
         //Animal dog = new Animal();
         //System.out.println(dog.getDamage());
         //System.out.print(dog.getLife());
-        gameEngine();
+        new Game().gameEngine();
     }
-    public static void gameEngine() {
+    public void gameEngine() {
         System.out.println("Welcome! Ready to play?");
         int numberOfCreatures = numberOfAnimals();
         Animal collection[] = new Animal[numberOfCreatures];
-        Scanner userInput = new Scanner(System.in);
-        int creature = 0;
-        collection[numberOfCreatures] = createCollection(collection, numberOfCreatures);
+        createCollection(collection, numberOfCreatures);
+        printTeam(collection, numberOfCreatures);
+        int player1 = -1;
+        int player2 = -1;
+        selectPlayer(collection, player1, player2);
+        System.out.print(player1);
+        System.out.print(player2);
+        //collection[0].attack(collection[0], collection[1]);
+    }
+    public void printTeam(Animal collection[], int numberOfCreatures) {
+        System.out.println("Meet your team:");
         for (int j = 0; j < numberOfCreatures; j++) {
-            System.out.println("special attack is => " + collection[j].specialAttack());
-            System.out.print(collection[j].getLife());
+            System.out.printf("=> " + j + "%nThis is **" + collection[j].getName() + "** %n  type: " + collection[j].getType() + "%n  life : " + collection[j].getLife() + "%n  damage: " + collection[j].getDamage() + "%n");
         }
     }
-    public static Animal createCollection(Animal collection[], int nbrCreatures) {
+    public void selectPlayer(Animal collection[], int player1, int player2) {
+        System.out.println("Please select two players with a number one by one: ");
+        Scanner userInput = new Scanner(System.in);
+        player1 = userInput.nextInt();
+        System.out.println("The first player is => " + collection[player1].getName());
+        player2 = userInput.nextInt();
+        System.out.println("The second player is" + collection[player2].getName());
+    }
+
+    public void createCollection(Animal collection[], int nbrCreatures) {
         Scanner userInput = new Scanner(System.in);
         int creature;
         for (int i = 0; i < nbrCreatures; i++) {
@@ -47,14 +63,13 @@ public class Game {
                     collection[i] = animal;
                 }
             }
-        return collection[];
     }
 
-    public static int numberOfAnimals() {
-        int numberOfCreatures = 0;
+    public int numberOfAnimals() {
+        int numberOfCreatures = -1;
         Scanner userInput = new Scanner(System.in);
-        while (numberOfCreatures < 1) {
-            System.out.println("How many animals would you like to create?");
+        while (numberOfCreatures % 2 != 0) {
+            System.out.println("How many animals would you like to create? (even numbers)");
             numberOfCreatures = userInput.nextByte();
         }
         return numberOfCreatures;

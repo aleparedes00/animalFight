@@ -1,3 +1,5 @@
+import sun.tools.tree.ShiftRightExpression;
+
 import java.util.Random;
 
 /**
@@ -5,14 +7,18 @@ import java.util.Random;
  */
 class Cat extends Animal {
     Cat(String name) {
-        super(name);
+        super(name, "Grumpy Cat");
     }
     Random number = new Random();
+    //Question: I could declare this function in Animal and pass the parameter: chance, basic number attack, name of attack and the int to make random of return. 4 param to make the function abstract?
     @Override
-    boolean specialAttack() {
-        //this function
-        System.out.println("Special attack");
-        return true;
+    int specialAttack() {
+        setSpecialAttackName("Calin Chat Potte");
+        int chance = number.nextInt(2) + 1;
+        if (chance == 1) {
+            return (30 + number.nextInt(20));
+        }
+        return 0;
     }
 
 }
