@@ -8,10 +8,12 @@ class Ferret extends Animal {
         super(name, "Angry Ferret!");
     }
     Random number = new Random();
-
+    @Override
+    String getSpecialAttackName() {
+        return "Boule Puante";
+    }
     @Override
     int specialAttack() {
-        setSpecialAttackName("Boule Puante");
         int chance = number.nextInt(1) + 1;
         if (chance == 1) {
             return (15 + number.nextInt(35) + 15);

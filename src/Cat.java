@@ -12,8 +12,11 @@ class Cat extends Animal {
     Random number = new Random();
     //Question: I could declare this function in Animal and pass the parameter: chance, basic number attack, name of attack and the int to make random of return. 4 param to make the function abstract?
     @Override
+    String getSpecialAttackName() {
+        return "Calin Chat Potte";
+    }
+    @Override
     int specialAttack() {
-        setSpecialAttackName("Calin Chat Potte");
         int chance = number.nextInt(2) + 1;
         if (chance == 1) {
             return (30 + number.nextInt(20));

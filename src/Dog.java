@@ -8,10 +8,12 @@ public class Dog extends Animal {
         super(name, "Furious Dog");
     }
     Random number = new Random();
-
+    @Override
+    String getSpecialAttackName() {
+    return "Scoobidou";
+    }
     @Override
     int specialAttack() {
-        setSpecialAttackName("Scoobidou");
         int chance = number.nextInt(3) + 1;
         if (chance == 1) {
             return (20 + number.nextInt(40));

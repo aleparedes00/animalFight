@@ -6,9 +6,7 @@ import java.util.Scanner;
 public class Game {
     //Animal team[] = new Animal[numberOfAnimals()];
     public static void main(String[] args) {
-        //Animal dog = new Animal();
-        //System.out.println(dog.getDamage());
-        //System.out.print(dog.getLife());
+
         new Game().gameEngine();
     }
     public void gameEngine() {
@@ -17,27 +15,37 @@ public class Game {
         Animal collection[] = new Animal[numberOfCreatures];
         createCollection(collection, numberOfCreatures);
         printTeam(collection, numberOfCreatures);
-        int player1 = -1;
-        int player2 = -1;
-        selectPlayer(collection, player1, player2);
-        System.out.print(player1);
-        System.out.print(player2);
-        //collection[0].attack(collection[0], collection[1]);
+        int player1 = 0;
+        int player2 = 1;
+        if (numberOfCreatures > 2) {
+            /*selectPlayer(collection, player1, player2);*/
+            /*System.out.println("Please select two players with a number one by one: ");
+            Scanner userInput = new Scanner(System.in);
+            player1 = userInput.nextInt();
+            System.out.println("The first player is => " + collection[player1].getName());
+            player2 = userInput.nextInt();
+            System.out.println("The second player is" + collection[player2].getName());*/
+        }
+        while (collection[player1].getLife() > 0 && collection[player2].getLife() > 0) {
+            collection[player1].attack(collection[player2]);
+            collection[player2].attack(collection[player1]);
+        }
     }
+
     public void printTeam(Animal collection[], int numberOfCreatures) {
         System.out.println("Meet your team:");
         for (int j = 0; j < numberOfCreatures; j++) {
             System.out.printf("=> " + j + "%nThis is **" + collection[j].getName() + "** %n  type: " + collection[j].getType() + "%n  life : " + collection[j].getLife() + "%n  damage: " + collection[j].getDamage() + "%n");
         }
     }
-    public void selectPlayer(Animal collection[], int player1, int player2) {
+    /*public void selectPlayer(Animal collection[], Integer player1, Integer player2) {
         System.out.println("Please select two players with a number one by one: ");
         Scanner userInput = new Scanner(System.in);
         player1 = userInput.nextInt();
         System.out.println("The first player is => " + collection[player1].getName());
         player2 = userInput.nextInt();
         System.out.println("The second player is" + collection[player2].getName());
-    }
+    }*/
 
     public void createCollection(Animal collection[], int nbrCreatures) {
         Scanner userInput = new Scanner(System.in);
