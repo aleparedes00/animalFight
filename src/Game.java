@@ -19,12 +19,12 @@ public class Game {
         int player2 = 1;
         if (numberOfCreatures > 2) {
             /*selectPlayer(collection, player1, player2);*/
-            /*System.out.println("Please select two players with a number one by one: ");
+            System.out.println("Please select two players with a number one by one: ");
             Scanner userInput = new Scanner(System.in);
             player1 = userInput.nextInt();
             System.out.println("The first player is => " + collection[player1].getName());
             player2 = userInput.nextInt();
-            System.out.println("The second player is" + collection[player2].getName());*/
+            System.out.println("The second player is" + collection[player2].getName());
         }
         while (collection[player1].getLife() > 0 && collection[player2].getLife() > 0) {
             collection[player1].attack(collection[player2]);
