@@ -9,11 +9,11 @@ class Ferret extends Animal {
     }
     Random number = new Random();
     @Override
-    String getSpecialAttackName() {
+    public String getSpecialAttackName() {
         return "Boule Puante";
     }
     @Override
-    int specialAttack() {
+    public int specialAttack() {
         int chance = number.nextInt(1) + 1;
         if (chance == 1) {
             return (15 + number.nextInt(35) + 15);

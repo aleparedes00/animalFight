@@ -6,9 +6,12 @@ import java.util.Scanner;
 public class Game {
     //Animal team[] = new Animal[numberOfAnimals()];
     public static void main(String[] args) {
-
-        new Game().gameEngine();
+        Game game = new Game();
+        System.out.println(game.getUserInput(String.class));
+        System.out.println(game.getUserInput(Integer.class));
+//        game.gameEngine();
     }
+
     public void gameEngine() {
         System.out.println("Welcome! Ready to play?");
         int numberOfCreatures = numberOfAnimals();
@@ -35,7 +38,7 @@ public class Game {
     public void printTeam(Animal collection[], int numberOfCreatures) {
         System.out.println("Meet your team:");
         for (int j = 0; j < numberOfCreatures; j++) {
-            System.out.printf("=> " + j + "%nThis is **" + collection[j].getName() + "** %n  type: " + collection[j].getType() + "%n  life : " + collection[j].getLife() + "%n  damage: " + collection[j].getDamage() + "%n");
+            System.out.println("=> " + j + "%nThis is **" + collection[j].getName() + "** %n  type: " + collection[j].getType() + "%n  life : " + collection[j].getLife() + "%n  damage: " + collection[j].getDamage() + "%n");
         }
     }
     /*public void selectPlayer(Animal collection[], Integer player1, Integer player2) {
@@ -48,29 +51,39 @@ public class Game {
     }*/
 
     public void createCollection(Animal collection[], int nbrCreatures) {
+
         Scanner userInput = new Scanner(System.in);
         int creature;
         for (int i = 0; i < nbrCreatures; i++) {
-                do {
-                    System.out.println((i+1) + " animal. What would you like to create? 1 = Cat, 2 = Dog, 3 = Ferret");
-                    creature = userInput.nextByte();
-                } while (creature < 1 || creature > 3);
+            do {
+                System.out.println((i + 1) + " animal. What would you like to create? 1 = Cat, 2 = Dog, 3 = Ferret");
+                creature = userInput.nextByte();
+            } while (creature < 1 || creature > 3);
 
-                System.out.println("Give to your new creature a name please");
-                String name = userInput.next();
-                if (creature == 1) {
-                    Animal animal = new Cat(name);
-                    collection[i] = animal;
-                }
-                else if (creature == 2) {
-                    Animal animal = new Dog(name);
-                    collection[i] = animal;
-                }
-                else if (creature == 3) {
-                    Animal animal = new Ferret(name);
-                    collection[i] = animal;
-                }
+            System.out.println("Give to your new creature a name please");
+            String name = userInput.next();
+            if (creature == 1) {
+                Animal animal = new Cat(name);
+                collection[i] = animal;
+            } else if (creature == 2) {
+                Animal animal = new Dog(name);
+                collection[i] = animal;
+            } else {
+                Animal animal = new Ferret(name);
+                collection[i] = animal;
             }
+        }
+    }
+
+    <T> T getUserInput(T type) {
+        if (type.equals(String.class)) {
+            return (T) "STr";
+        }
+
+        if (type.equals(Integer.class)) {
+            return (T) new Integer(1);
+        }
+        return null;
     }
 
     public int numberOfAnimals() {

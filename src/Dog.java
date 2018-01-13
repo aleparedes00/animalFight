@@ -9,11 +9,11 @@ public class Dog extends Animal {
     }
     Random number = new Random();
     @Override
-    String getSpecialAttackName() {
+    public String getSpecialAttackName() {
     return "Scoobidou";
     }
     @Override
-    int specialAttack() {
+    public int specialAttack() {
         int chance = number.nextInt(3) + 1;
         if (chance == 1) {
             return (20 + number.nextInt(40));

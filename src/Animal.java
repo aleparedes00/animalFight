@@ -3,7 +3,7 @@ import java.util.Random;
 /**
  * Created by alejandraparedes on 1/11/18.
  */
-abstract class Animal {
+public abstract class Animal implements AnimalFighter {
     private int damage;
     private int life;
     private String name;
@@ -32,10 +32,6 @@ abstract class Animal {
     public String getType() {
         return type;
     }
-
-    abstract int specialAttack();
-
-    abstract String getSpecialAttackName();
 
     public void attack(Animal defender) {
         int specialDamage = this.specialAttack();
