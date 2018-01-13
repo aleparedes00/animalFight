@@ -37,7 +37,7 @@ abstract class Animal {
 
     abstract String getSpecialAttackName();
 
-    public void attack(Animal defender) {
+    public int attack(Animal defender) {
         int specialDamage = this.specialAttack();
         int localDamage = this.getDamage();
         if (specialDamage != 0)
@@ -55,6 +55,17 @@ abstract class Animal {
         {
             System.out.println(this.getName() +"has wont.");
         }
+
+        return defender.life;
     }
 
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "damage=" + damage +
+                ", life=" + life +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }
