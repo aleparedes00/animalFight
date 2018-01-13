@@ -30,12 +30,22 @@ public class Game {
             collection[player1].attack(collection[player2]);
             collection[player2].attack(collection[player1]);
         }
+        whoWon(collection, player1, player2);
     }
-
+    public void whoWon(Animal collection[], int player1, int player2) {
+        if (collection[player1].getLife() < 0)
+        {
+            System.out.println("Your player 2 " + collection[player2].getName() + "has won. Congratulations");
+        }
+        else if (collection[player2].getLife() < 0)
+        {
+            System.out.println("Your player 1 " + collection[player1].getName() + "has won. Congratulations!");
+        }
+    }
     public void printTeam(Animal collection[], int numberOfCreatures) {
         System.out.println("Meet your team:");
         for (int j = 0; j < numberOfCreatures; j++) {
-            System.out.printf("=> " + j + "%nThis is **" + collection[j].getName() + "** %n  type: " + collection[j].getType() + "%n  life : " + collection[j].getLife() + "%n  damage: " + collection[j].getDamage() + "%n");
+            System.out.printf("=> " + j + "%nThis is ** " + collection[j].getName() + " ** %n  type: " + collection[j].getType() + "%n  life : " + collection[j].getLife() + "%n  damage: " + collection[j].getDamage() + "%n");
         }
     }
     /*public void selectPlayer(Animal collection[], Integer player1, Integer player2) {

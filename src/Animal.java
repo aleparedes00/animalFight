@@ -49,7 +49,7 @@ abstract class Animal {
         {
             System.out.println("attacker => " + this.getType() + " and defender => " + defender.getType()); //testing
             defender.setLife(defender.getLife() - localDamage);
-            System.out.println(this.getName() + " made " + getDamage() + " point of damage. " + defender.getName() + " has " + defender.getLife() + " point of life.");
+            System.out.println(this.getName() + " made " + localDamage + " point of damage. " + defender.getName() + " has " + defender.getLife() + " point of life.");
         }
         else
         {
